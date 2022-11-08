@@ -13,15 +13,14 @@ fs.readdir(pathToFolder, (err, files) =>{
             fs.stat(pathToFile, (err, stats) => {
                 if (err) {
                   console.log(`err`)
-                } else {
+                } else if (stats.isFile()){
                   let name= path.parse(pathToFile).name;
                   let extname = path.extname(pathToFile);
                   let type = extname.slice(1,extname.length)
                   let size = stats.size;
                   console.log (name + '-' + type + '-' + size + 'b')
                 }
-              }) 
-            })
-           
+            }) 
+        })   
     }
 })
